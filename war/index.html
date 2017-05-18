@@ -9,7 +9,7 @@
     <meta name="Keywords" content="diagram, online, flow chart, flowchart maker, uml, erd">
     <meta itemprop="name" content="draw.io - free flowchart maker and diagrams online">
 	<meta itemprop="description" content="draw.io is a free online diagramming application  and flowchart maker . You can use it to create UML, entity relationship,
-		org charts, BPMN and BPM, database schema and networks. Also possible are telecommunication network, workflow, flowcharts, maps overlays and GIS, electronic 
+		org charts, BPMN and BPM, database schema and networks. Also possible are telecommunication network, workflow, flowcharts, maps overlays and GIS, electronic
 		circuit and social network diagrams.">
 	<meta itemprop="image" content="https://lh4.googleusercontent.com/-cLKEldMbT_E/Tx8qXDuw6eI/AAAAAAAAAAs/Ke0pnlk8Gpg/w500-h344-k/BPMN%2Bdiagram%2Brc2f.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -41,44 +41,44 @@
 		{
 			var result = new Object();
 			var params = window.location.search.slice(1).split('&');
-			
+
 			for (var i = 0; i < params.length; i++)
 			{
 				idx = params[i].indexOf('=');
-				
+
 				if (idx > 0)
 				{
 					result[params[i].substring(0, idx)] = params[i].substring(idx + 1);
 				}
 			}
-			
+
 			return result;
 		})();
-
+    /** Commented by EduCaaS
 		// Redirects page if required
 		if (urlParams['dev'] != '1')
 		{
 			(function()
 			{
 				var proto = window.location.protocol;
-				
+
 				// Electron protocol is file:
 				if (proto != 'file:')
 				{
 					var host = window.location.host;
-		
+
 					// Redirects apex and rt to www
 					if (host === 'draw.io' || host === 'rt.draw.io')
 					{
 						host = 'www.draw.io';
 					}
-					
+
 					// Redirects to SSL/non-SSL
 					if (urlParams['demo'] != '1')
 					{
 						var ssl = (urlParams['https'] != null) ? urlParams['https'] == '1' :
 							navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 9;
-						
+
 						if (ssl && proto != 'https:')
 						{
 							proto = 'https:';
@@ -88,11 +88,11 @@
 							proto = 'http:';
 						}
 					}
-					
+
 					var href = proto + '//' + host + window.location.href.substring(
 							window.location.protocol.length +
 							window.location.host.length + 2);
-		
+
 					// Redirects if href changes
 					if (href != window.location.href)
 					{
@@ -101,6 +101,7 @@
 				}
 			})();
 		}
+    */
 	</script>
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for draw.io" href="http://blog.draw.io/feed/">
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/plgmlhohecdddhbmmkncjdmlhcmaachm">
@@ -171,6 +172,7 @@
 			cursor:pointer;
 			margin:5px;
 		}
+    /** Commented by EduCaaS
 		.geFooterContainer div.geSocialFooter a {
 			display:inline;
 			padding:0px;
@@ -187,7 +189,7 @@
 		}
 		#geFooterItem1:hover {
 			background-color: #b0b0b0;
-		}		
+		}
 		.geFooterContainer>div>img {
 			opacity:0.5;
 			background:#e5e5e5;
@@ -204,6 +206,7 @@
 		.geFooterContainer>div>img:hover {
 			opacity: 1;
 		}
+    */
 	</style>
 	<!-- Workaround for binary XHR in IE 9/10, see App.loadUrl -->
 	<!--[if (IE 9)|(IE 10)]><!-->
@@ -230,17 +233,17 @@
 				s.setAttribute('type', 'text/javascript');
 				s.setAttribute('src', src);
 				var r = false;
-				
+
 				if (id != null)
 				{
 					s.setAttribute('id', id);
 				}
-				
+
 				if (dataAppKey != null)
 				{
 					s.setAttribute('data-app-key', dataAppKey);
 				}
-				
+
 				s.onload = s.onreadystatechange = function()
 				{
 					if (!r && (!this.readyState || this.readyState == 'complete'))
@@ -249,7 +252,7 @@
 			      		onLoad();
 					}
 			  	};
-			  	
+
 			  	var t = document.getElementsByTagName('script')[0];
 			  	t.parentNode.insertBefore(s, t);
 			}
@@ -268,10 +271,10 @@
 			var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true; g.src = src;
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
 		};
-		
+
 		// Checks for local storage
 		var isLocalStorage = false;
-		
+
 		try
 		{
 			isLocalStorage = urlParams['local'] != '1' && typeof(localStorage) != 'undefined';
@@ -288,18 +291,18 @@
 		{
 			// Used to request grapheditor/mxgraph sources in dev mode
 			var mxDevUrl = document.location.protocol + '//devhost.jgraph.com/mxgraph2';
-			
+
 			if (document.location.protocol == 'file:')
 			{
 				mxDevUrl = '../../mxgraph2';
-				
+
 				// Forces includes for dev environment in node.js
 				mxForceIncludes = true;
 			}
 
 			var geBasePath = mxDevUrl + '/javascript/examples/grapheditor/www/js';
 			var mxBasePath = mxDevUrl + '/javascript/src';
-			
+
 			// Used to request draw.io sources in dev mode
 			var drawDevUrl = '';
 
@@ -307,11 +310,11 @@
 			{
 				drawDevUrl = document.location.protocol + '//drawhost.jgraph.com/';
 			}
-			
+
 			mxscript(drawDevUrl + 'js/diagramly/Init.js');
 			mxscript(geBasePath + '/Init.js');
 			mxscript(mxDevUrl + '/javascript/src/js/mxClient.js');
-			
+
 			// Adds all JS code that depends on mxClient. This indirection via Devel.js is
 			// required in some browsers to make sure mxClient.js (and the files that it
 			// loads asynchronously) are available when the code loaded in Devel.js runs.
@@ -327,12 +330,12 @@
 			// Electron
 			mxscript('../etc/electron/ElectronApp.js');
 		}
-		
+
 		// Adds basic error handling
 		window.onerror = function()
 		{
 			var status = document.getElementById('geStatus');
-			
+
 			if (status != null)
 			{
 				status.innerHTML = 'Page could not be loaded. Please try refreshing.';
@@ -346,7 +349,7 @@
 	<div class="geBlock" style="text-align:center;min-width:50%;">
 		<h1>Flowchart Maker and Online Diagram Software</h1>
 		<p>
-			draw.io (formerly Diagramly) is free online diagram software. You can use it as a flowchart maker, network diagram software, to create UML online, as an ER diagram tool, 
+			draw.io (formerly Diagramly) is free online diagram software. You can use it as a flowchart maker, network diagram software, to create UML online, as an ER diagram tool,
 			to design database schema, to build BPMN online, as a circuit diagram maker, and more. draw.io can import .vsdx, Gliffy&trade; and Lucidchart&trade; files .
 		</p>
 		<h2 id="geStatus">Loading...</h2>
@@ -355,6 +358,7 @@
 		</p>
 	</div>
 </div>
+<!-- Commented by EduCaaS
 <div id="geFooter" style="visibility:hidden;overflow:hidden;margin-right:170px;">
 	<div class="geSocialFooter" style="position:absolute;right:32px;white-space:nowrap;">
     	<a href="https://plus.google.com/u/0/+DrawIo1/posts" title="draw.io on Google+" target="_blank">
@@ -391,6 +395,7 @@
 		</tr>
 	</table>
 </div>
+-->
 <script type="text/javascript">
 /**
  * Main
@@ -401,7 +406,7 @@ App.main();
 if (document != null)
 {
 	var footerElem = document.getElementById('geFooterLink1');
-	
+
 	if (footerElem != null)
 	{
 		footerElem.onclick = function()
@@ -421,7 +426,7 @@ if (urlParams['analytics'] != '0' && urlParams['dev'] != '1' && urlParams['chrom
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
+
 		ga('create', 'UA-78007-10', 'auto');
 		ga('send', 'pageview');
 }
